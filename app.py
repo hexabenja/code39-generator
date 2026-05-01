@@ -1,6 +1,9 @@
 import sys
 import barcode
 from barcode.writer import ImageWriter
+import subprocess
+
+
 
 def generar_code39(texto):
     # Crear clase Code39
@@ -22,3 +25,15 @@ if __name__ == "__main__":
 
     texto = sys.argv[1]
     generar_code39(texto)
+
+
+user_data = input("Ingresa el código: ")
+
+result = subprocess.run(
+    ['app.py'], 
+    input=user_data, 
+    text=True, 
+    capture_output=True
+)
+
+print("Subprocess output:", result.stdout)
