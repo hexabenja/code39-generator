@@ -41,6 +41,12 @@ class TerminalSimple:
     
     def generar_codigo(self, texto):
             code39 = barcode.get_barcode_class('code39')
+            writer = ImageWriter()
+            options = {
+                "font_path": "arial.ttf", # Windows
+                "font_size": 10,
+                "text_distance": 5
+            }
             # Genera y guarda directamente
             nombre = code39(texto.upper(), writer=ImageWriter(), add_checksum=False).save(texto.upper())
             self.escribir(f"Archivo generado: {nombre}\n")
